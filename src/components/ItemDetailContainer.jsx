@@ -2,11 +2,11 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 
+import { ItemDetail } from './ItemDetail.jsx';
 import { products } from "../data/products.js"
-import { ItemList } from './ItemList.jsx';
 
-export const ItemListContainer = (props) => {
-    const [items, setItems] = useState([])
+export const ItemDetailContainer = () => {
+    const [item, setItem] = useState([null])
 
     const { id } = useParams ();
 
@@ -20,27 +20,19 @@ export const ItemListContainer = (props) => {
         });
 
         myPromise.then( response => {
-            if (!id) {
-                setItems(response);
-            } else {
-                const filterCategory = response.filter(
-                    (item) => item.category === id
+                const findId = response.find(
+                    (item) => item.id === Number(id)
                 );
-                setItems(filterCategory);
-            }
-            
+                setItem(findId);
         })
 
     }, [id]);
 
-    console.log(items);
-
-
     return  (
         <main>
             <Container className="mt-4">
-                <h1>{id}</h1>
-                <ItemList items={items} />
+                {<h1>Detalle</h1>}
+                <ItemDetail item={item}/>
             </Container>
         </main>
     );
