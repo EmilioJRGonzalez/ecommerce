@@ -13,22 +13,27 @@ import { ItemList } from './ItemList.jsx';
 
 let categoria;
 
+const categoriasArray = [
+    { id: 'videos', texto: 'Placas de Videos' },
+    { id: 'mothers', texto: 'Motherboards' },
+    { id: 'procesors', texto: 'Procesadores' },
+  ];
+
 export const ItemListContainer = (props) => {
     const [items, setItems] = useState([])
 
     const { id } = useParams ();
 
-    useEffect(() => {
+    useEffect(() => {        
 
-        if (id === "videos"){
-            categoria = "Placas de Videos";
-        }else if (id === "mothers"){
-            categoria = "Motherboards";
-        }else if (id === "procesors"){
-            categoria = "Procesadores";
+        let aux;
+        aux = categoriasArray.find((categoria) => categoria.id === id);
+        if (!aux){
+            categoria = ""
         }else{
-            categoria = "";
+            categoria = aux.texto
         }
+        
 
         const db = getFirestore();
 

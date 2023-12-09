@@ -128,7 +128,7 @@ export const Cart = () => {
                                 name="email"
                         />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={sendOrder}>COMPRAR</Button>
+                    <Button variant="primary" onClick={sendOrder}>COMPRAR</Button>
                 </Form>
             </Container>
         </Container>
