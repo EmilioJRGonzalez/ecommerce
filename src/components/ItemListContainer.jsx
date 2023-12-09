@@ -26,6 +26,8 @@ export const ItemListContainer = (props) => {
             categoria = "Motherboards";
         }else if (id === "procesors"){
             categoria = "Procesadores";
+        }else{
+            categoria = "";
         }
 
         const db = getFirestore();
