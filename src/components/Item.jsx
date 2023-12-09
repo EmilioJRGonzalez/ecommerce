@@ -6,7 +6,7 @@ export const Item = ({item}) => {
 
     return (
         <Card className='rounded-4 shadow' style={{ width: '30rem' }}>
-          <Card.Img variant="top" src={item.img} />
+          <Card.Img variant="top" src={item.ImageId} />
           <Card.Body>
             <Card.Title>{item.name}</Card.Title>
             <Card.Text>
