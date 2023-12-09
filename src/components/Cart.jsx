@@ -23,7 +23,7 @@ export const Cart = () => {
      
     const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0)
 
-    const handleChange = (event) => {
+    const handleChange = () => {
         setBuyer((buyer) => {
             return {
                 ...buyer, [event.target.name]: event.target.value
@@ -32,22 +32,27 @@ export const Cart = () => {
     }
 
     const sendOrder = () => {
-        const order = {
-            buyer,
-            items,
-            total
-        };
-    
-        const db = getFirestore();
-        const orderCollection = collection(db, "orders");
-    
-        addDoc(orderCollection, order).then(({ id }) => {
-            if (id) {
-                alert("Su orden: " + id + " ha sido completada!");
-                setBuyer(initialValues);
-                clear();
-            }
-        });
+
+        if(buyer.name ==="" || buyer.phone ==="" || buyer.email ===""){
+            alert("Complete sus datos");
+        }else{
+            const order = {
+                buyer,
+                items,
+                total
+            };
+        
+            const db = getFirestore();
+            const orderCollection = collection(db, "orders");
+        
+            addDoc(orderCollection, order).then(({ id }) => {
+                if (id) {
+                    alert("Su orden: " + id + " ha sido completada!");
+                    setBuyer(initialValues);
+                    clear();
+                }
+            });
+        }
     };
 
     if(!items.length) {
@@ -123,7 +128,7 @@ export const Cart = () => {
                                 name="email"
                         />
                     </Form.Group>
-                    <Button variant="primary" onClick={sendOrder}>COMPRAR</Button>
+                    <Button variant="primary" type="submit" onClick={sendOrder}>COMPRAR</Button>
                 </Form>
             </Container>
         </Container>
