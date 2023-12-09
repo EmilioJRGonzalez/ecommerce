@@ -13,7 +13,8 @@ export const ItemDetail = ({ item }) => {
         <>
             <h2>{item.title}</h2>
             <img src={item.ImageId} width="600px" height="650px"/>
-            <h3>Stock: {item.stock}</h3>
+            <h3>Precio: $ {item.price}</h3>
+            <h4>Stock: {item.stock}</h4>
             <ItemCounter onAdd={add} stock={item.stock} initial={1}/>
         </>
     );
