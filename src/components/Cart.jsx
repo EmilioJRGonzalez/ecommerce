@@ -59,7 +59,7 @@ export const Cart = () => {
         return (
             <Container className="mt-4">
                 <h2>Carrito vacio</h2>
-                <Button variant="dark" onClick={() => navigate("/")}>INICIO</Button>
+                <Button className="mt-3" variant="dark" onClick={() => navigate("/")}>INICIO</Button>
             </Container>
             );
     }
@@ -68,7 +68,7 @@ export const Cart = () => {
         <Container className="mt-4">
             <h1>Carrito</h1>
 
-            <Table striped>
+            <Table className="table-secondary table-hover" striped>
                 <thead>
                     <tr>
                     <th>Nombre</th>
@@ -85,7 +85,7 @@ export const Cart = () => {
                         <td>{item.price}</td>
                         <td>{item.quantity}</td>
                         <td><img src={item.ImageId} width={180}/></td>
-                        <td><CloseButton onClick={() => onRemove(item.id)}/></td>
+                        <td><CloseButton className="p-4" onClick={() => onRemove(item.id)}/></td>
                         </tr>
                     ))}
                 </tbody>
@@ -96,7 +96,7 @@ export const Cart = () => {
                 </tfoot>
             </Table>
             <Button onClick={clear}>Vaciar Carrito</Button>
-            <Container className="mt-4 p-4 shadow-lg mb-5 bg-body rounded">
+            <Container className="mt-4 p-4 shadow-lg mb-5 bg-dark-subtle rounded">
                 <Form>
                     <Form.Group className="mb-3" controlId="name">
                             <Form.Label>Nombre</Form.Label>
