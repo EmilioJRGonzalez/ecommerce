@@ -12,7 +12,7 @@ export const Item = ({item}) => {
             <Card.Text>
               {item.description}
             </Card.Text>
-            <Link to={ `/item/${item.id}`  }><Button variant="primary">Ver mas</Button></Link>
+            <Link to={ `/item/${item.id}`  }><Button variant="dark">Ver mas</Button></Link>
           </Card.Body>
         </Card>
       );

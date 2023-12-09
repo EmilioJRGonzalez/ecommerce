@@ -27,12 +27,24 @@ h3 {
     color: white !important;
 }
 
-div {
+/* div {
     color: white !important;
-}
+} */
 
 p {
     color: black !important;
+}
+
+.cart{
+    font-size: large;
+    font-weight: bold;
+    color: white !important;
+}
+
+.cartMark{
+    font-size: large;
+    font-weight: bold;
+    font-size: large;
 }
 
 /* .navbar:active {
