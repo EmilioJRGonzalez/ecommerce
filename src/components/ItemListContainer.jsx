@@ -17,6 +17,7 @@ export const ItemListContainer = (props) => {
     const { id } = useParams ();
 
     useEffect(() => {
+
         const db = getFirestore();
 
         const refCollection = !id

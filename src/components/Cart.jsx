@@ -20,21 +20,22 @@ export const Cart = () => {
     const { clear, items, onRemove } = useContext(CartContext);
     
     const navigate = useNavigate();
+     
+    const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0)
 
     const handleChange = (event) => {
         setBuyer((buyer) => {
             return {
                 ...buyer, [event.target.name]: event.target.value
             }
-        }
-        )
+        })
     }
 
     const sendOrder = () => {
         const order = {
             buyer,
             items,
-            total: 136000,
+            total
         };
     
         const db = getFirestore();
@@ -83,6 +84,11 @@ export const Cart = () => {
                         </tr>
                     ))}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td className="fw-bold" colSpan={5}>Total: {total}</td>
+                    </tr>
+                </tfoot>
             </Table>
             <Button onClick={clear}>Vaciar Carrito</Button>
             <Container className="mt-4 p-4 shadow-lg mb-5 bg-body rounded">
