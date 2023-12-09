@@ -11,12 +11,22 @@ import {
 
 import { ItemList } from './ItemList.jsx';
 
+let categoria;
+
 export const ItemListContainer = (props) => {
     const [items, setItems] = useState([])
 
     const { id } = useParams ();
 
     useEffect(() => {
+
+        if (id === "videos"){
+            categoria = "Placas de Videos";
+        }else if (id === "mothers"){
+            categoria = "Motherboards";
+        }else if (id === "procesors"){
+            categoria = "Procesadores";
+        }
 
         const db = getFirestore();
 
@@ -39,7 +49,7 @@ export const ItemListContainer = (props) => {
     return  (
         <main>
             <Container className="mt-4">
-                <h1>{id}</h1>
+                <h1>{categoria}</h1>
                 <ItemList items={items} />
             </Container>
         </main>

@@ -23,7 +23,7 @@ export const Cart = () => {
      
     const total = items.reduce((sum, item) => sum + item.quantity * item.price, 0)
 
-    const handleChange = () => {
+    const handleChange = (event) => {
         setBuyer((buyer) => {
             return {
                 ...buyer, [event.target.name]: event.target.value
@@ -33,7 +33,7 @@ export const Cart = () => {
 
     const sendOrder = () => {
 
-        if(buyer.name ==="" || buyer.phone ==="" || buyer.email ===""){
+        if(buyer.name === "" || buyer.phone === "" || buyer.email === ""){
             alert("Complete sus datos");
         }else{
             const order = {
